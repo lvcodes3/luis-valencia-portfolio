@@ -22,11 +22,12 @@ const Container = styled.div`
     text-align: center;
     font-size: 54px;
     font-weight: 900;
+    margin-bottom: 10px;
   }
-
   div {
-    width: 75%;
-    min-width: 75%;
+    margin: 0 auto;
+    width: 50%;
+    min-width: 50%;
   }
 `;
 

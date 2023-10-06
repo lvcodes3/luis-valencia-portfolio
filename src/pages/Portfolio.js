@@ -25,6 +25,10 @@ const ButtonsContainer = styled.div`
     text-decoration: none;
     transition-duration: 0.5s;
 
+    h1 {
+      margin: 0;
+    }
+
     &:hover {
       transform: scale(1.05);
     }
