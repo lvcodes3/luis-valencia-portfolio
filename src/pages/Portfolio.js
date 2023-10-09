@@ -5,12 +5,13 @@ import { FaLinkedin, FaGithub, FaCode } from "react-icons/fa";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  padding-top: 50px;
+  height: 84vh;
+  display: flex;
+  flex-direction: column;
   background-color: ${props => props.colorMode === "light" ? "white" : "black"};
 `;
-
 const ButtonsContainer = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +39,6 @@ const ButtonsContainer = styled.div`
     }
   }
 `;
-
 const ProjectsContainer = styled.div`
   margin: 0 auto;
   padding: 0;
@@ -89,7 +89,6 @@ const Portfolio = ({ colorMode }) => {
           <h1>My Deployed Projects</h1>
         </div>
       </ButtonsContainer>
-
       {showProjects && (
         <ProjectsContainer colorMode={colorMode}>
           <a className="projectLinks" href="https://scale.fresnostate.edu/scale/login.php" target="_blank" rel="noreferrer">

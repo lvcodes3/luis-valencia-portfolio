@@ -19,7 +19,7 @@ const EduContainer = styled.div`
 
   h1 {
     margin: 0;
-    padding: 30px 0 0 30px;
+    padding: 50px 0 0 30px;
   }
   hr {
     border-color: ${props => props.colorMode === "light" ? "black" : "white"};
@@ -56,7 +56,7 @@ const WorkContainer = styled.div`
 
   h1 {
     margin: 0;
-    padding: 30px 0 0 30px;
+    padding: 50px 0 0 30px;
   }
   hr {
     border-color: ${props => props.colorMode === "light" ? "black" : "white"};
@@ -94,7 +94,7 @@ const InnerWorkContainer = styled.div`
 const SkillContainer = styled.div`
   h1 {
     margin: 0;
-    padding: 30px 0 0 30px;
+    padding: 50px 0 0 30px;
   }
   hr {
     border-color: ${props => props.colorMode === "light" ? "black" : "white"};

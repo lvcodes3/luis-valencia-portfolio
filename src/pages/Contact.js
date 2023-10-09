@@ -5,14 +5,17 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  padding-top: 50px;
+  height: 84vh;
+  display: flex;
+  justify-content: center;
   color: ${props => props.colorMode === "light" ? "black" : "white"};
   background-color: ${props => props.colorMode === "light" ? "white" : "black"};
 
   #formContainer {
     margin: 0 auto;
+    margin-top: 50px;
     width: 450px;
+    height: 450px;
     border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
     border-radius: 10px;
 

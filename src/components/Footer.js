@@ -10,7 +10,7 @@ Modal.setAppElement("#root");
 // Footer Styling //
 const Container = styled.footer`
   width: 100%;
-  height: 40px;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: space-between;

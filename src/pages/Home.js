@@ -1,48 +1,96 @@
-// dependencies
+// dependencies //
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+// resources //
+import luis from "../images/luis.jpg";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  padding-top: 50px;
-  color: ${props => props.colorMode === "light" ? "black" : "white"};
+  height: 84vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
   background-color: ${props => props.colorMode === "light" ? "white" : "black"};
+`;
+const SubContainer = styled.div`
+  width: 60%;
+  padding: 5px;
+  border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+  border-radius: 10px;
+  background-color: silver;
+`;
+const LuisContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
-  #mainHeader {
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-    font-size: 64px;
-    font-weight: 900;
-    margin-bottom: 10px;
+  img {
+    width: 342.45px;
+    height: 439.95px;
+    border-radius: 50%;
   }
-  #subHeader {
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-    font-size: 54px;
-    font-weight: 900;
-    margin-bottom: 10px;
-  }
+
   div {
-    margin: 0 auto;
-    width: 50%;
-    min-width: 50%;
+    h1 {
+      padding: 0;
+      text-align: center;
+      font-size: 64px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+`;
+const LinkContainer = styled.div`
+  padding-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const StyledLink = styled(Link)`
+  width: 125px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  color: ${props => props.colorMode === "light" ? "white" : "black"};
+  background-color: ${props => props.colorMode === "light" ? "black" : "white"};
+  transition-duration: 0.5s;
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
 const Home = ({ colorMode }) => {
   return (
     <Container colorMode={colorMode}>
-      <h1 id="mainHeader">Hello, I'm Luis Valencia!</h1>
-      <h1 id="subHeader">I'm a Software Engineer!</h1>
-      <div>
-        <p>
-          I have my Bachelors in Computer Science from California State University, Fresno.
-          I have about 2-3 years of experience in Software Development & Web Development.
-          I love learning and developing the world of tomorrow.
-        </p>
-      </div>
+      <SubContainer colorMode={colorMode}>
+        <LuisContainer>
+          <img src={luis} alt="Luis Valencia" />
+          <div>
+            <h1>Luis Valencia</h1>
+            <p>Full-Stack Software Engineer / Web Developer</p>
+          </div>
+        </LuisContainer>
+        <LinkContainer>
+          <StyledLink to="/about" colorMode={colorMode}>
+            More About Me
+          </StyledLink>
+          <StyledLink to="/portfolio" colorMode={colorMode}>
+            My Work
+          </StyledLink>
+        </LinkContainer>
+      </SubContainer>
     </Container>
   );
 };
