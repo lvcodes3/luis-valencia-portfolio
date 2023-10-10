@@ -10,7 +10,7 @@ const Nav = styled.nav`
   top: 0;
   display: flex;
   background-color: black;
-  border-bottom: ${(props) => props.colormode === "light" ? "1px solid black" : "1px solid white"};
+  border-bottom: ${(props) => (props.colormode === "light" ? "1px solid black" : "1px solid white")};
 `;
 
 const BaseTab = styled.div`
@@ -34,20 +34,20 @@ const BaseLink = styled(Link)`
 `;
 const HomeLink = styled(BaseLink)`
   font-size: 22;
-  color: ${(props) => props.isSelected === 1 || props.isHover === 1 ? "white" : "silver"};
-  transform: ${(props) => props.isSelected === 1 || props.isHover === 1 ? "scale(1.1)" : "scale(1)"};
+  color: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "white" : "silver")};
+  transform: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "scale(1.1)" : "scale(1)")};
 `;
 const AboutLink = styled(BaseLink)`
-  color: ${(props) => props.isSelected === 2 || props.isHover === 2 ? "white" : "silver"};
-  transform: ${(props) => props.isSelected === 2 || props.isHover === 2 ? "scale(1.1)" : "scale(1)"};
+  color: ${(props) => (props.isSelected === 2 || props.isHover === 2 ? "white" : "silver")};
+  transform: ${(props) => (props.isSelected === 2 || props.isHover === 2 ? "scale(1.1)" : "scale(1)")};
 `;
 const PortfolioLink = styled(BaseLink)`
-  color: ${(props) => props.isSelected === 3 || props.isHover === 3 ? "white" : "silver"};
-  transform: ${(props) => props.isSelected === 3 || props.isHover === 3 ? "scale(1.1)" : "scale(1)"};
+  color: ${(props) => (props.isSelected === 3 || props.isHover === 3 ? "white" : "silver")};
+  transform: ${(props) => (props.isSelected === 3 || props.isHover === 3 ? "scale(1.1)" : "scale(1)")};
 `;
 const ContactLink = styled(BaseLink)`
-  color: ${(props) => props.isSelected === 4 || props.isHover === 4 ? "white" : "silver"};
-  transform: ${(props) => props.isSelected === 4 || props.isHover === 4 ? "scale(1.1)" : "scale(1)"};
+  color: ${(props) => (props.isSelected === 4 || props.isHover === 4 ? "white" : "silver")};
+  transform: ${(props) => (props.isSelected === 4 || props.isHover === 4 ? "scale(1.1)" : "scale(1)")};
 `;
 
 const Navbar = ({ colorMode }) => {

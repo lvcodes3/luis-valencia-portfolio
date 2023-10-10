@@ -15,7 +15,7 @@ const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   background-color: black;
-  border-top: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+  border-top: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
 
   #textContainer {
     display: flex;
@@ -104,7 +104,6 @@ const ModalFooter = styled.div`
 
 const Footer = ({ colorMode, changeColorMode }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(colorMode);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -118,7 +117,6 @@ const Footer = ({ colorMode, changeColorMode }) => {
     let selectElement = document.getElementById("displayModeSelect");
     let selectedOption = selectElement.options[selectElement.selectedIndex];
     let selectedValue = selectedOption.value;
-    setSelectedValue(selectedValue);
     changeColorMode(selectedValue);
   };
 
@@ -142,7 +140,7 @@ const Footer = ({ colorMode, changeColorMode }) => {
           </ModalHeader>
           <ModalBody>
             <p><b>Display Mode:</b></p>
-            <select id="displayModeSelect" value={selectedValue} onChange={handleSelectChange}>
+            <select id="displayModeSelect" value={colorMode} onChange={handleSelectChange}>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
             </select>

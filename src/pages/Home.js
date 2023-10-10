@@ -11,12 +11,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
-  background-color: ${props => props.colorMode === "light" ? "white" : "black"};
+  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
 `;
 const SubContainer = styled.div`
   width: 60%;
   padding: 5px;
-  border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+  border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
   border-radius: 10px;
   background-color: silver;
 `;
@@ -63,8 +63,8 @@ const StyledLink = styled(Link)`
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  color: ${props => props.colorMode === "light" ? "white" : "black"};
-  background-color: ${props => props.colorMode === "light" ? "black" : "white"};
+  color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
+  background-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
   transition-duration: 0.5s;
   &:hover {
     transform: scale(1.05);

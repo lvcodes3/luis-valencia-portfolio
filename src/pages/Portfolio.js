@@ -9,7 +9,7 @@ const Container = styled.div`
   height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.colorMode === "light" ? "white" : "black"};
+  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
 `;
 const ButtonsContainer = styled.div`
   margin-top: 50px;
@@ -23,7 +23,7 @@ const ButtonsContainer = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: ${props => props.colorMode === "light" ? "black" : "white"};
+    color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
     text-decoration: none;
     transition-duration: 0.5s;
 
@@ -36,7 +36,7 @@ const ButtonsContainer = styled.div`
     }
 
     FaGithub {
-      color: ${props => props.colorMode === "light" ? "black" : "white"};
+      color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
     }
   }
 `;
@@ -51,7 +51,7 @@ const ProjectsContainer = styled.div`
 
   .projectLinks {
     font-size: 14px;
-    color: ${props => props.colorMode === "light" ? "black" : "white"};
+    color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
     text-decoration: none;
     transition-duration: 0.5s;
 

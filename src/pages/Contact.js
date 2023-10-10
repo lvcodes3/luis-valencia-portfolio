@@ -8,22 +8,22 @@ const Container = styled.div`
   height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
-  color: ${props => props.colorMode === "light" ? "black" : "white"};
-  background-color: ${props => props.colorMode === "light" ? "white" : "black"};
+  color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
+  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
 
   #formContainer {
     margin: 0 auto;
     margin-top: 50px;
     width: 450px;
     height: 450px;
-    border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+    border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
     border-radius: 10px;
 
     h1 {
       margin: 0 auto;
       text-align: center;
       padding: 10px 0px 10px 0px;
-      border-bottom: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+      border-bottom: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
       margin-bottom: 15px;
     }
 
@@ -52,14 +52,14 @@ const Container = styled.div`
           width: 400px;
           height: 20px;
           margin: 0px 0px 15px 0px;
-          border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+          border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
         }
   
         textarea {
           width: 400px;
           height: 150px;
           margin: 0px 0px 15px 0px;
-          border: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+          border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
         }
 
         input[type="submit"] {
@@ -68,8 +68,8 @@ const Container = styled.div`
           cursor: pointer;
           border: none;
           border-radius: 10px;
-          color: ${props => props.colorMode === "light" ? "white" : "black"};
-          background-color: ${props => props.colorMode === "light" ? "black" : "white"};
+          color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
+          background-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
           transition-duration: 0.5s;
           &:hover {
             transform: scale(1.05);

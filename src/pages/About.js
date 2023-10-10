@@ -8,8 +8,8 @@ import codingImage from "../images/coding.webp";
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  color: ${props => props.colorMode === "light" ? "black" : "white"};
-  background-color: ${props => props.colorMode === "light" ? "white" : "black"};
+  color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
+  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
 `;
 
 const EduContainer = styled.div`
@@ -20,7 +20,7 @@ const EduContainer = styled.div`
     padding: 50px 0 0 30px;
   }
   hr {
-    border-color: ${props => props.colorMode === "light" ? "black" : "white"};
+    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
   }
 `;
 const InnerEduContainer = styled.div`
@@ -57,7 +57,7 @@ const WorkContainer = styled.div`
     padding: 50px 0 0 30px;
   }
   hr {
-    border-color: ${props => props.colorMode === "light" ? "black" : "white"};
+    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
   }
 `;
 const InnerWorkContainer = styled.div`
@@ -95,7 +95,7 @@ const SkillContainer = styled.div`
     padding: 50px 0 0 30px;
   }
   hr {
-    border-color: ${props => props.colorMode === "light" ? "black" : "white"};
+    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
   }
 `;
 const InnerSkillContainer = styled.div`
