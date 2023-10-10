@@ -1,30 +1,53 @@
-// dependencies
+// dependencies //
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
   width: 100%;
-  height: 8vh;
+  height: 60px;
   position: sticky;
   top: 0;
   display: flex;
   background-color: black;
-  border-bottom: ${props => props.colorMode === "light" ? "1px solid black" : "1px solid white"};
+  border-bottom: ${(props) => props.colormode === "light" ? "1px solid black" : "1px solid white"};
 `;
-const LogoTab = styled.div`
+
+const BaseTab = styled.div`
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const LogoTab = styled(BaseTab)`
   flex: 1.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
-const ItemTab = styled.div`
-  height: 100%;
+const ItemTab = styled(BaseTab)`
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+`;
+
+const BaseLink = styled(Link)`
+  font-size: 20px;
+  font-weight: 600;
+  transition: all 0.5s ease;
+  text-decoration: none;
+`;
+const HomeLink = styled(BaseLink)`
+  font-size: 22;
+  color: ${(props) => props.isSelected === 1 || props.isHover === 1 ? "white" : "silver"};
+  transform: ${(props) => props.isSelected === 1 || props.isHover === 1 ? "scale(1.1)" : "scale(1)"};
+`;
+const AboutLink = styled(BaseLink)`
+  color: ${(props) => props.isSelected === 2 || props.isHover === 2 ? "white" : "silver"};
+  transform: ${(props) => props.isSelected === 2 || props.isHover === 2 ? "scale(1.1)" : "scale(1)"};
+`;
+const PortfolioLink = styled(BaseLink)`
+  color: ${(props) => props.isSelected === 3 || props.isHover === 3 ? "white" : "silver"};
+  transform: ${(props) => props.isSelected === 3 || props.isHover === 3 ? "scale(1.1)" : "scale(1)"};
+`;
+const ContactLink = styled(BaseLink)`
+  color: ${(props) => props.isSelected === 4 || props.isHover === 4 ? "white" : "silver"};
+  transform: ${(props) => props.isSelected === 4 || props.isHover === 4 ? "scale(1.1)" : "scale(1)"};
 `;
 
 const Navbar = ({ colorMode }) => {
@@ -47,60 +70,32 @@ const Navbar = ({ colorMode }) => {
   const handleMouseEnter = (idx) => {
     setIsHover(idx);
   };
+
   const handleMouseLeave = () => {
     setIsHover(null);
-  };
-
-  // dynamic css styling //
-  const commonLinkStyle = {
-    fontSize: 20,
-    fontWeight: 600,
-    transition: "all 0.5s ease",
-    textDecoration: "none",
-  };
-  const Tab1Style = {
-    ...commonLinkStyle,
-    fontSize: 22,
-    color: isSelected === 1 ? "white" : isHover === 1 ? "white" : "silver",
-    transform: isSelected === 1 ? "scale(1.1)" : isHover === 1 ? "scale(1.1)" : "scale(1)",
-  };
-  const Tab2Style = {
-    ...commonLinkStyle,
-    color: isSelected === 2 ? "white" : isHover === 2 ? "white" : "silver",
-    transform: isSelected === 2 ? "scale(1.1)" : isHover === 2 ? "scale(1.1)" : "scale(1)",
-  };
-  const Tab3Style = {
-    ...commonLinkStyle,
-    color: isSelected === 3 ? "white" : isHover === 3 ? "white" : "silver",
-    transform: isSelected === 3 ? "scale(1.1)" : isHover === 3 ? "scale(1.1)" : "scale(1)",
-  };
-  const Tab4Style = {
-    ...commonLinkStyle,
-    color: isSelected === 4 ? "white" : isHover === 4 ? "white" : "silver",
-    transform: isSelected === 4 ? "scale(1.1)" : isHover === 4 ? "scale(1.1)" : "scale(1)",
   };
 
   return (
     <Nav colorMode={colorMode}>
       <LogoTab>
-        <Link to="/" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} style={Tab1Style}>
+        <HomeLink to="/" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
           LV
-        </Link>
+        </HomeLink>
       </LogoTab>
       <ItemTab>
-        <Link to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} style={Tab2Style}>
+        <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
           About
-        </Link>
+        </AboutLink>
       </ItemTab>
       <ItemTab>
-        <Link to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} style={Tab3Style}>
+        <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
           Portfolio
-        </Link>
+        </PortfolioLink>
       </ItemTab>
       <ItemTab>
-        <Link to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} style={Tab4Style}>
+        <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
           Contact
-        </Link>
+        </ContactLink>
       </ItemTab>
     </Nav>
   );

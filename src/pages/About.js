@@ -1,12 +1,10 @@
-// dependencies
+// dependencies //
 import styled from "styled-components";
-
-// assets
+// resources //
 import fsImage from "../images/fs.png";
 import or2stemImage from "../images/or2stem.jpg";
 import codingImage from "../images/coding.webp";
 
-// styled styling //
 const Container = styled.div`
   width: 100%;
   height: 100%;

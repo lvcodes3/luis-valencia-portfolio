@@ -1,16 +1,16 @@
-// dependencies
+// dependencies //
 import { useState } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
-import { FaCog, FaToggleOff, FaToggleOn } from "react-icons/fa";
+// resources //
+import { FaCog } from "react-icons/fa";
 
-// init the modal //
+// initialize the modal //
 Modal.setAppElement("#root");
 
-// Footer Styling //
 const Container = styled.footer`
   width: 100%;
-  height: 8vh;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,6 +29,7 @@ const Container = styled.footer`
     }
   }
 `;
+
 const FooterFaCog = styled(FaCog)`
   color: white;
   font-size: 20px;
@@ -40,7 +41,6 @@ const FooterFaCog = styled(FaCog)`
   }
 `;
 
-// Modal Styling //
 const CustomModal = styled(Modal)`
   overlay {
     background-color: rgba(0, 0, 0, 0.5);
@@ -101,17 +101,10 @@ const ModalFooter = styled.div`
     border-radius: 10px;
   }
 `;
-const CustomFaToggleOff = styled(FaToggleOff)`
-  font-size: 20px;
-  cursor: pointer;
-`;
-const CustomFaToggleOn = styled(FaToggleOn)`
-  font-size: 20px;
-  cursor: pointer;
-`;
 
 const Footer = ({ colorMode, changeColorMode }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(colorMode);
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -120,6 +113,15 @@ const Footer = ({ colorMode, changeColorMode }) => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  const handleSelectChange = () => {
+    let selectElement = document.getElementById("displayModeSelect");
+    let selectedOption = selectElement.options[selectElement.selectedIndex];
+    let selectedValue = selectedOption.value;
+    setSelectedValue(selectedValue);
+    changeColorMode(selectedValue);
+  };
+
   return (
     <Container colorMode={colorMode}>
       <div id="textContainer">
@@ -140,19 +142,10 @@ const Footer = ({ colorMode, changeColorMode }) => {
           </ModalHeader>
           <ModalBody>
             <p><b>Display Mode:</b></p>
-            {
-              colorMode === "light"
-                ? (
-                  <CustomFaToggleOff
-                    onClick={() => changeColorMode("dark")}
-                  />
-                )
-                : (
-                  <CustomFaToggleOn
-                    onClick={() => changeColorMode("light")}
-                  />
-                )
-            }
+            <select id="displayModeSelect" value={selectedValue} onChange={handleSelectChange}>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
           </ModalBody>
           <ModalFooter>
             <button onClick={closeModal}>Exit</button>

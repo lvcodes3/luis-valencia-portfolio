@@ -1,11 +1,11 @@
-// dependencies
+// dependencies //
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 84vh;
+  height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   color: ${props => props.colorMode === "light" ? "black" : "white"};

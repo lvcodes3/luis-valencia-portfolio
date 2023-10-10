@@ -1,11 +1,12 @@
-// dependencies
+// dependencies //
 import { useState } from "react";
 import styled from "styled-components";
+// resources //
 import { FaLinkedin, FaGithub, FaCode } from "react-icons/fa";
 
 const Container = styled.div`
   width: 100%;
-  height: 84vh;
+  height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   background-color: ${props => props.colorMode === "light" ? "white" : "black"};

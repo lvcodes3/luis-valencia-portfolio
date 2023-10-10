@@ -6,7 +6,7 @@ import luis from "../images/luis.jpg";
 
 const Container = styled.div`
   width: 100%;
-  height: 84vh;
+  height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
   align-items: center;
