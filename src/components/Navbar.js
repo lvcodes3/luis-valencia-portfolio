@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-const Nav = styled.nav`
+const ResponsiveNav = styled.nav`
   width: 100%;
   height: 60px;
   position: sticky;
@@ -11,19 +11,68 @@ const Nav = styled.nav`
   display: flex;
   background-color: black;
   border-bottom: ${(props) => (props.colormode === "light" ? "1px solid black" : "1px solid white")};
-`;
 
-const BaseTab = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const LogoTab = styled(BaseTab)`
-  flex: 1.5;
-`;
-const ItemTab = styled(BaseTab)`
-  flex: 1;
+  #nav-main-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+  }
+
+  #nav-desktop-menu {
+    display: flex;
+    flex: 7;
+    border: 2px solid green;
+
+    .nav-desktop-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+  }
+
+  #nav-mobile-menu-btn {
+    display: ${(props) => (props.mobileMenuVisible ? "flex" : "none")};
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #nav-mobile-menu {
+    display: ${(props) => (props.mobileMenuVisible ? "flex" : "none")};
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  @media (max-width: 768px) {
+    #nav-desktop-menu {
+      display: none;
+    }
+
+    #nav-mobile-menu-btn {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 769px) {
+    #nav-desktop-menu {
+      display: flex;
+    }
+
+    #nav-mobile-menu-btn {
+      display: none;
+    }
+
+    #nav-mobile-menu {
+      display: none;
+    }
+  }
 `;
 
 const BaseLink = styled(Link)`
@@ -33,7 +82,7 @@ const BaseLink = styled(Link)`
   text-decoration: none;
 `;
 const HomeLink = styled(BaseLink)`
-  font-size: 22;
+  font-size: 22px;
   color: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "white" : "silver")};
   transform: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "scale(1.1)" : "scale(1)")};
 `;
@@ -54,6 +103,7 @@ const Navbar = ({ colorMode }) => {
   const location = useLocation();
   const [isHover, setIsHover] = useState(null);
   const [isSelected, setIsSelected] = useState(null);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -75,29 +125,53 @@ const Navbar = ({ colorMode }) => {
     setIsHover(null);
   };
 
+  const handleMobileMenuBtnClick = () => {
+    setMobileMenuVisible(!mobileMenuVisible);
+  };
+
   return (
-    <Nav colorMode={colorMode}>
-      <LogoTab>
+    <ResponsiveNav colorMode={colorMode} mobileMenuVisible={mobileMenuVisible}>
+      <div id='nav-main-logo'>
         <HomeLink to="/" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
           LV
         </HomeLink>
-      </LogoTab>
-      <ItemTab>
-        <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-          About
-        </AboutLink>
-      </ItemTab>
-      <ItemTab>
-        <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-          Portfolio
-        </PortfolioLink>
-      </ItemTab>
-      <ItemTab>
-        <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-          Contact
-        </ContactLink>
-      </ItemTab>
-    </Nav>
+      </div>
+      <div id='nav-desktop-menu'>
+        <div className='nav-desktop-item'>
+          <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            About
+          </AboutLink>
+        </div>
+        <div className='nav-desktop-item'>
+          <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            Portfolio
+          </PortfolioLink>
+        </div>
+        <div className='nav-desktop-item'>
+          <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            Contact
+          </ContactLink>
+        </div>
+      </div>
+      <div id='nav-mobile-menu-btn' onClick={handleMobileMenuBtnClick}>&#9776;</div>
+      <div id='nav-mobile-menu'>
+        <nav className='nav-mobile-item'>
+          <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            About
+          </AboutLink>
+        </nav>
+        <nav className='nav-mobile-item'>
+          <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            Portfolio
+          </PortfolioLink>
+        </nav>
+        <nav className='nav-mobile-item'>
+          <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+            Contact
+          </ContactLink>
+        </nav>
+      </div>
+    </ResponsiveNav>
   );
 };
 

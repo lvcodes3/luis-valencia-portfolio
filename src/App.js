@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // components
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
+import ResponsiveNavbar from "./components/ResponsiveNavbar";
 import Footer from "./components/Footer";
 // pages
 import Home from "./pages/Home";
@@ -29,7 +30,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar colorMode={colorMode} />
+        <ResponsiveNavbar colorMode={colorMode} />
         <Routes>
           <Route path="/" exact element={<Home colorMode={colorMode} />} />
           <Route path="/portfolio" exact element={<Portfolio colorMode={colorMode} />} />
