@@ -1,76 +1,69 @@
 // dependencies //
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-const ResponsiveNav = styled.nav`
+const Header = styled.header`
   width: 100%;
   height: 60px;
   position: sticky;
   top: 0;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: black;
   border-bottom: ${(props) => (props.colormode === "light" ? "1px solid black" : "1px solid white")};
 
-  #nav-main-logo {
-    height: 100%;
+  nav {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    flex: 3;
   }
 
-  #nav-desktop-menu {
-    display: flex;
-    flex: 7;
-    border: 2px solid green;
-
-    .nav-desktop-item {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-    }
-  }
-
-  #nav-mobile-menu-btn {
-    display: ${(props) => (props.mobileMenuVisible ? "flex" : "none")};
+  .nav-btn {
+    margin-right: 5%;
+    padding: 5px;
     cursor: pointer;
-    font-size: 22px;
+    background: transparent;
+    border: none;
+    outline: none;
     color: white;
-    margin-right: 20px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #nav-mobile-menu {
-    display: ${(props) => (props.mobileMenuVisible ? "flex" : "none")};
-    flex-direction: column;
-    align-items: flex-end;
+    /* default hidden */
+    visibility: hidden;
+    opacity: 0;
+    font-size: 22px;
   }
 
   @media (max-width: 768px) {
-    #nav-desktop-menu {
-      display: none;
+    .nav-btn {
+        visibility: visible;
+        opacity: 1;
     }
 
-    #nav-mobile-menu-btn {
-      display: flex;
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        transform: translateY(-100vh);
     }
-  }
 
-  @media (min-width: 769px) {
-    #nav-desktop-menu {
-      display: flex;
+    .responsive_nav {
+        transform: none;
     }
 
-    #nav-mobile-menu-btn {
-      display: none;
-    }
-
-    #nav-mobile-menu {
-      display: none;
+    .nav-close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
     }
   }
 `;
@@ -80,8 +73,10 @@ const BaseLink = styled(Link)`
   font-weight: 600;
   transition: all 0.5s ease;
   text-decoration: none;
+  padding: 20px;
 `;
 const HomeLink = styled(BaseLink)`
+  margin-left: 10%;
   font-size: 22px;
   color: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "white" : "silver")};
   transform: ${(props) => (props.isSelected === 1 || props.isHover === 1 ? "scale(1.1)" : "scale(1)")};
@@ -100,79 +95,59 @@ const ContactLink = styled(BaseLink)`
 `;
 
 const Navbar = ({ colorMode }) => {
-  const location = useLocation();
-  const [isHover, setIsHover] = useState(null);
-  const [isSelected, setIsSelected] = useState(null);
-  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+    const navRef = useRef();
+    const location = useLocation();
+    const [isHover, setIsHover] = useState(null);
+    const [isSelected, setIsSelected] = useState(null);
+  
+    useEffect(() => {
+      if (location.pathname === "/") {
+        setIsSelected(1);
+      } else if (location.pathname === "/about") {
+        setIsSelected(2);
+      } else if (location.pathname === "/portfolio") {
+        setIsSelected(3);
+      } else if (location.pathname === "/contact") {
+        setIsSelected(4);
+      }
+    }, [location.pathname]);
+  
+    const handleMouseEnter = (idx) => {
+      setIsHover(idx);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHover(null);
+    };
 
-  useEffect(() => {
-    if (location.pathname === "/") {
-      setIsSelected(1);
-    } else if (location.pathname === "/about") {
-      setIsSelected(2);
-    } else if (location.pathname === "/portfolio") {
-      setIsSelected(3);
-    } else if (location.pathname === "/contact") {
-      setIsSelected(4);
+    const showNavbar = () => {
+        navRef.current.classList.toggle("responsive_nav");
     }
-  }, [location.pathname]);
 
-  const handleMouseEnter = (idx) => {
-    setIsHover(idx);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHover(null);
-  };
-
-  const handleMobileMenuBtnClick = () => {
-    setMobileMenuVisible(!mobileMenuVisible);
-  };
-
-  return (
-    <ResponsiveNav colorMode={colorMode} mobileMenuVisible={mobileMenuVisible}>
-      <div id='nav-main-logo'>
-        <HomeLink to="/" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-          LV
-        </HomeLink>
-      </div>
-      <div id='nav-desktop-menu'>
-        <div className='nav-desktop-item'>
-          <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            About
-          </AboutLink>
-        </div>
-        <div className='nav-desktop-item'>
-          <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            Portfolio
-          </PortfolioLink>
-        </div>
-        <div className='nav-desktop-item'>
-          <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            Contact
-          </ContactLink>
-        </div>
-      </div>
-      <div id='nav-mobile-menu-btn' onClick={handleMobileMenuBtnClick}>&#9776;</div>
-      <div id='nav-mobile-menu'>
-        <nav className='nav-mobile-item'>
-          <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            About
-          </AboutLink>
-        </nav>
-        <nav className='nav-mobile-item'>
-          <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            Portfolio
-          </PortfolioLink>
-        </nav>
-        <nav className='nav-mobile-item'>
-          <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
-            Contact
-          </ContactLink>
-        </nav>
-      </div>
-    </ResponsiveNav>
-  );
+    return (
+        <Header colorMode={colorMode}>
+            <HomeLink to="/" onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+                LV
+            </HomeLink>
+            <nav ref={navRef}>
+                <AboutLink to="/about" onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+                    About
+                </AboutLink>
+                <PortfolioLink to="/portfolio" onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+                    Portfolio
+                </PortfolioLink>
+                <ContactLink to="/contact" onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={handleMouseLeave} isSelected={isSelected} isHover={isHover}>
+                    Contact
+                </ContactLink>
+                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+                    <FaTimes />
+                </button>
+            </nav>
+            <button className="nav-btn" onClick={showNavbar}>
+                <FaBars />        
+            </button>
+        </Header>
+    );
 };
 
 export default Navbar;

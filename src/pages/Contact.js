@@ -1,86 +1,7 @@
-// dependencies //
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import styled from "styled-components";
 
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 120px);
-  display: flex;
-  justify-content: center;
-  color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
-
-  #formContainer {
-    margin: 0 auto;
-    margin-top: 50px;
-    width: 450px;
-    height: 450px;
-    border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
-    border-radius: 10px;
-
-    h1 {
-      margin: 0 auto;
-      text-align: center;
-      padding: 10px 0px 10px 0px;
-      border-bottom: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
-      margin-bottom: 15px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 16px;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        div {
-          width: 100%;
-          flex-direction: row;
-
-          label {
-            text-align: left;
-            margin: 10px 0px 0px 0px;
-          }
-        }
-  
-        input {
-          width: 400px;
-          height: 20px;
-          margin: 0px 0px 15px 0px;
-          border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
-        }
-  
-        textarea {
-          width: 400px;
-          height: 150px;
-          margin: 0px 0px 15px 0px;
-          border: ${(props) => (props.colorMode === "light" ? "1px solid black" : "1px solid white")};
-        }
-
-        input[type="submit"] {
-          width: 125px;
-          height: 35px;
-          cursor: pointer;
-          border: none;
-          border-radius: 10px;
-          color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
-          background-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-          transition-duration: 0.5s;
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
-      }
-    }
-  }
-`;
-
-const Contact = ({ colorMode }) => {
+const Contact = () => {
   const form = useRef();
   const [emailSent, setEmailSent] = useState(false);
 
@@ -109,38 +30,72 @@ const Contact = ({ colorMode }) => {
   };
 
   return (
-    <Container colorMode={colorMode}>
+    <div className="w-full h-[calc(100vh-120px)] flex justify-center bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
       {!emailSent ? (
-        <div id="formContainer">
-          <h1>Contact Me</h1>
-          <form ref={form} onSubmit={sendEmail}>
-            <div>
-              <div>
-                <label><b>Name:</b></label>
+        <div className="w-[450px] h-[450px] mt-[60px] border-2 border-black dark:border-white rounded-lg">
+          <h1 className="mb-3 py-2.5 text-center text-2xl font-semibold border-b-2 border-black dark:border-white">
+            Contact Me
+          </h1>
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="flex flex-col items-center"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-full flex-row">
+                <label className="text-left">
+                  <b>Name:</b>
+                </label>
               </div>
-              <input name="user_name" type="text" maxLength="50" autoFocus required />
+              <input
+                name="user_name"
+                type="text"
+                maxLength="50"
+                autoFocus
+                required
+                className="w-[400px] h-[20px] mb-3 border-2 border-black dark:border-white"
+              />
             </div>
-            <div>
-              <div>
-                <label><b>Email:</b></label>
+            <div className="flex flex-col items-center">
+              <div className="w-full flex-row">
+                <label className="text-left">
+                  <b>Email:</b>
+                </label>
               </div>
-              <input name="user_email" type="email" maxLength="50" required />
+              <input
+                name="user_email"
+                type="email"
+                maxLength="50"
+                required
+                className="w-[400px] h-[20px] mb-3 border-2 border-black dark:border-white"
+              />
             </div>
-            <div>
-              <div>
-                <label><b>Message:</b></label>
+            <div className="flex flex-col items-center">
+              <div className="w-full flex-row">
+                <label className="text-left">
+                  <b>Message:</b>
+                </label>
               </div>
-              <textarea name="message" maxLength="250" required />
+              <textarea
+                name="message"
+                maxLength="250"
+                required
+                className="w-[400px] h-[150px] mb-3 border-2 border-black dark:border-white"
+              />
             </div>
-            <div>
-              <input type="submit" value="Send" />
+            <div className="flex flex-col items-center">
+              <input
+                type="submit"
+                value="Send"
+                className="w-[125px] h-[35px] font-medium text-black dark:text-white bg-green-400 border-2 border-green-500 rounded-lg cursor-pointer hover:scale-105"
+              />
             </div>
           </form>
         </div>
       ) : (
-        <h1>Thank you for your input.</h1>
+        <h1 className="mt-[60px] text-center text-2xl font-semibold">Thank you for your input.</h1>
       )}
-    </Container>
+    </div>
   );
 };
 

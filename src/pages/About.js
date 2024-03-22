@@ -1,248 +1,187 @@
-// dependencies //
-import styled from "styled-components";
-// resources //
 import fsImage from "../images/fs.png";
 import or2stemImage from "../images/or2stem.jpg";
 import codingImage from "../images/coding.webp";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-  background-color: ${(props) => (props.colorMode === "light" ? "white" : "black")};
-`;
+const About = () => {
+  const skills = [
+    "AJAX",
+    "Bash",
+    "Bootstrap 4",
+    "CSS",
+    "Git",
+    "GraphQL",
+    "HTML",
+    "JavaScript",
+    "JSON",
+    "MongoDB",
+    "MySQL",
+    "Next.js",
+    "PHP",
+    "PostgreSQL",
+    "Python",
+    "Redux",
+    "Tailwind CSS",
+    "TypeScript",
+    "Vue.js",
+    "C++",
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "Drizzle ORM",
+    "Socket.IO / Web Sockets",
+    "JWTs",
+    "User Auth",
+    "Stripe",
+    "Shadcn/ui",
+    "REST APIs",
+    "Responsive Web Apps",
+    "Software Development Life Cycle",
+    "Fluent English and Spanish",
+  ];
 
-const EduContainer = styled.div`
-  margin-bottom: 30px;
+  const softwares = [
+    "Adobe",
+    "Clerk Auth",
+    "FileZilla",
+    "GitHub",
+    "Jira",
+    "macOS",
+    "MAMP",
+    "Microsoft Windows",
+    "Visual Studio Code",
+    "Xcode",
+    "Postman",
+  ];
 
-  h1 {
-    margin: 0;
-    padding: 50px 0 0 30px;
-  }
-  hr {
-    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-  }
-`;
-const InnerEduContainer = styled.div`
-  display: flex;
-  justify-content: center;
-
-  #eduContentContainer {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    h2, h3 {
-      margin: 5px;
-    }
-    div {
-      width: 75%;
-      min-width: 75%;
-    }
-  }
-  #eduImageContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const WorkContainer = styled.div`
-  margin-bottom: 30px;
-
-  h1 {
-    margin: 0;
-    padding: 50px 0 0 30px;
-  }
-  hr {
-    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-  }
-`;
-const InnerWorkContainer = styled.div`
-  display: flex;
-  justify-content: center;
-
-  .workContentContainer {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    h2, h3 {
-      margin: 5px;
-    }
-    div {
-      width: 75%;
-      min-width: 75%;
-      ul {
-        margin: 5px;
-      }
-    }
-  }
-  .workImageContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const SkillContainer = styled.div`
-  h1 {
-    margin: 0;
-    padding: 50px 0 0 30px;
-  }
-  hr {
-    border-color: ${(props) => (props.colorMode === "light" ? "black" : "white")};
-  }
-`;
-const InnerSkillContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-bottom: 30px;
-
-  div {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h2, ul {
-      margin: 0;
-    }
-  }
-`;
-
-const About = ({ colorMode }) => {
   return (
-    <Container colorMode={colorMode}>
-      <EduContainer colorMode={colorMode}>
-        <h1>My Education</h1>
-        <hr />
-        <InnerEduContainer>
-          <div id="eduContentContainer">
-            <h2>California State University, Fresno</h2>
-            <h3>Bachelors of Science, Computer Science <em>(May 2023)</em></h3>
-            <div>
+    <div className="w-full h-full dark:text-white bg-slate-100 dark:bg-slate-800">
+      {/* Education */}
+      <div className="py-[30px]">
+        <h1 className="pl-[7%] pb-2 text-2xl font-bold">My Education</h1>
+        <hr className="border-2 border-black dark:border-white" />
+        <div className="p-1 flex md:flex-row flex-col-reverse justify-center">
+          <div className="flex-[2] flex flex-col justify-center items-center gap-1">
+            <h2 className="text-xl font-semibold">
+              California State University, Fresno
+            </h2>
+            <h3 className="text-lg font-medium">
+              Bachelors of Science, Computer Science <em>(May 2023)</em>
+            </h3>
+            <div className="w-[75%] w-max-[75%]">
               <p>
-                Software Engineering I, Software Engineering II, Web Programming, Computer Security, Data Structures and Algorithms,
-                Database Systems, Operating Systems, Internet Networking and Protocols, Simulation, Computer Graphics, etc...
+                Software Engineering I, Software Engineering II, Web
+                Programming, Computer Security, Data Structures and Algorithms,
+                Database Systems, Operating Systems, Internet Networking and
+                Protocols, Simulation, Computer Graphics, etc...
               </p>
             </div>
           </div>
-          <div id="eduImageContainer">
+          <div className="flex-1 flex justify-center items-center">
             <img
               src={fsImage}
               alt="California State University, Fresno"
-              style={{ width: 200, height: 200 }}
+              className="w-[200px] h-[200px] rounded-full"
             />
           </div>
-        </InnerEduContainer>
-      </EduContainer>
+        </div>
+      </div>
 
-      <WorkContainer colorMode={colorMode}>
-        <h1>My Work Experience</h1>
-        <hr />
-        <InnerWorkContainer>
-          <div className="workImageContainer">
+      {/* Work */}
+      <div className="py-[30px]">
+        <h1 className="pl-[7%] pb-2 text-2xl font-bold">My Work Experience</h1>
+        <hr className="border-2 border-black dark:border-white" />
+        <div className="p-1 flex md:flex-row flex-col justify-center pb-[30px]">
+          <div className="flex-1 flex justify-center items-center">
             <img
               src={codingImage}
               alt="Software Engineer"
-              style={{ width: 200, height: 120 }}
+              className="w-[200px] h-[120px]"
             />
           </div>
-          <div className="workContentContainer">
-            <h2>Data Consultants</h2>
-            <h3>Software Engineer</h3>
-            <h3>07/01/23 - present</h3>
-            <div>
+          <div className="flex-[2] flex flex-col justify-center items-center gap-1">
+            <h2 className="text-xl font-semibold">Software Engineer</h2>
+            <h3 className="text-lg font-medium">Data Consultants</h3>
+            <p>07/01/23 - present</p>
+            <div className="w-[75%] w-max-[75%]">
               <p>
-                Utilizing PHP, JavaScript, HTML, CSS, MySQL, and Windows OS to work on our "Grapevine eF&I" web application
-                that is used by multiple vehicle dealerships in the US to sell and log vehicles. Working on a multitude of
-                functionalities like: dynamic forms programming (similar to Adobe Sign, but is connected directly to our
-                web app), street-level tax rate look up (based on a US address & postal databases), frontend improvements
-                to the web app, custom APIs to send data between servers, etc...
+                Engineered significant updates on the "Grapevine eF&I" web app
+                for national car dealerships, utilizing PHP, JavaScript, MySQL,
+                HTML, and CSS. Implemented a street-level tax rate lookup
+                feature, enhancing transaction accuracy by 10%, and established
+                a robust data audit system, ensuring a 10% enhancement in data
+                integrity and regulatory compliance. Developed custom APIs to
+                augment application capabilities and interoperability, resulting
+                in a 5% increase in operational efficiency. Administered
+                front-end improvements, executed bug fixes, and optimized code,
+                leading to a 15% increase in application performance.
               </p>
             </div>
           </div>
-        </InnerWorkContainer>
-        <br /><br />
-        <InnerWorkContainer>
-          <div className="workImageContainer">
+        </div>
+        <div className="p-1 flex md:flex-row flex-col justify-center">
+          <div className="flex-1 flex justify-center items-center">
             <img
               src={or2stemImage}
               alt="OR2STEM"
-              style={{ width: 200, height: 101.01 }}
+              className="w-[200px] h-[101.01px]"
             />
           </div>
-          <div className="workContentContainer">
-            <h2>California State University, Fresno - On-Ramp To STEM</h2>
-            <h3>Fullstack Web Developer</h3>
-            <h3>06/13/22 - 07/01/23</h3>
-            <div>
+          <div className="flex-[2] flex flex-col justify-center items-center gap-1">
+            <h2 className="text-xl font-semibold">Full Stack Web Developer</h2>
+            <h3 className="text-lg font-medium">
+              California State University, Fresno
+            </h3>
+            <p>06/13/22 - 12/29/23</p>
+            <div className="w-[75%] w-max-[75%]">
               <p>
-                Utilized HTML, CSS, JavaScript, PHP, PostgreSQL, and Mac OS to create SCALE, a web app that is currently
-                being used by Fresno State's Math Department for a more immersive teaching and learning experience.
-                Professors and students connect to SCALE by logging into their school's Canvas LMS, then navigating to
-                their enrolled math course and clicking on the SCALE link that would then redirect them and provide it
-                with their Canvas credentials needed to authorize the users, set up an ecosystem of classes, users, and
-                functionalities based on their roles.
+                Developed SCALE, a modern web app for California State
+                University, Fresno's Math Department, using PHP, JavaScript,
+                PostgreSQL, HTML, and CSS. Integrated with Canvas LMS for secure
+                authentication, ensuring 100% secure access for faculty and
+                students. Implemented faculty functionalities for monitoring
+                student progress, managing math content, creating dynamic
+                assessments, and student functionalities for browsing content,
+                answering questions, and tracking progress. Resulted in a 10-20%
+                increase in faculty productivity and a 10-25% increase in
+                student engagement and academic performance.
               </p>
             </div>
           </div>
-        </InnerWorkContainer>
-      </WorkContainer>
+        </div>
+      </div>
 
-      <SkillContainer colorMode={colorMode}>
-        <h1>My Skills</h1>
-        <hr />
-        <InnerSkillContainer>
-          <div>
-            <h2>Technical:</h2>
-            <ul>
-              <li>JavaScript, JQuery, AJAX</li>
-              <li>TypeScript</li>
-              <li>PHP</li>
-              <li>Node</li>
-              <li>Express</li>
-              <li>PostgreSQL, MySQL</li>
-              <li>MongoDB</li>
-              <li>JSON</li>
-              <li>Python</li>
-              <li>C++</li>
-              <li>React, Redux</li>
-              <li>Vue</li>
-              <li>HTML</li>
-              <li>CSS, Bootstrap, Tailwind</li>
-              <li>Full Stack Web Development</li>
-              <li>Full Stack Software Development</li>
-              <li>Software Development Lifecycle</li>
-              <li>Software Architecture</li>
-              <li>REST APIs</li>
-              <li>JSON Web Tokens</li>
-              <li>Agile, Scrum, Waterfall</li>
-            </ul>
+      {/* Skills */}
+      <div className="py-[30px]">
+        <h1 className="pl-[7%] pb-2 text-2xl font-bold">My Skills</h1>
+        <hr className="border-2 border-black dark:border-white" />
+        <div className="p-1 flex md:flex-row flex-col justify-center">
+          <div className="flex-[2] flex flex-col items-center md:pb-0 pb-[30px]">
+            <h2 className="pb-2 text-xl font-semibold">Technical:</h2>
+            <div className="flex flex-wrap justify-center gap-2">
+              {skills.map((skill) => {
+                return (
+                  <div className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105">
+                    {skill}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div>
-            <h2>Software:</h2>
-            <ul>
-              <li>Visual Studio Code</li>
-              <li>Xcode</li>
-              <li>Git, GitHub</li>
-              <li>Postman</li>
-              <li>MAMP</li>
-              <li>fileZilla</li>
-              <li>Adobe</li>
-              <li>Microsoft</li>
-              <li>Google</li>
-              <li>Jira</li>
-            </ul>
+          <div className="flex-[2] flex flex-col items-center">
+            <h2 className="pb-2 text-xl font-semibold">Software:</h2>
+            <div className="flex flex-wrap justify-center gap-2">
+              {softwares.map((software) => {
+                return (
+                  <div className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105">
+                    {software}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </InnerSkillContainer>
-      </SkillContainer>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
