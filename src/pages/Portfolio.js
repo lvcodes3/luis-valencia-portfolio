@@ -6,7 +6,7 @@ const Portfolio = () => {
   const [showProjects, setShowProjects] = useState(false);
 
   return (
-    <div className="w-full h-[calc(100vh-120px)] flex flex-col justify-start items-center bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+    <div className="w-full h-[calc(100vh-110px)] flex flex-col justify-start items-center bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
       <div className="pt-[60px] flex flex-col items-start gap-y-[60px]">
         <a
           href="https://www.linkedin.com/in/luis-valencia-profile"

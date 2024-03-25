@@ -4,7 +4,7 @@ import luis from "../images/luis.jpg";
 
 const Home = () => {
   return (
-    <div className="w-screen h-[calc(100vh-120px)] flex justify-center items-center">
+    <div className="w-screen h-[calc(100vh-110px)] flex justify-center items-center">
       <div className="w-full h-full flex md:flex-row flex-col justify-center items-center gap-4 bg-slate-100 dark:bg-slate-800">
         <img
           src={luis}

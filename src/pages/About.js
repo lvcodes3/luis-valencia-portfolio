@@ -161,7 +161,7 @@ const About = () => {
               {skills.map((skill) => {
                 return (
                   <div
-                    key={skill} 
+                    key={skill}
                     className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105"
                   >
                     {skill}
@@ -176,7 +176,7 @@ const About = () => {
               {softwares.map((software) => {
                 return (
                   <div
-                    key={software} 
+                    key={software}
                     className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105"
                   >
                     {software}

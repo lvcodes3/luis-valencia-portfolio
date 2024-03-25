@@ -1,46 +1,40 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 const Contact = () => {
-  const form = useRef();
   const [emailSent, setEmailSent] = useState(false);
 
-  const sendEmail = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_10ptcv3",
-        "template_x3co0ci",
-        form.current,
-        "m8qoMr3Hkb0-yAjwv"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          console.log("Message sent");
-          setEmailSent(true);
-        },
-        (error) => {
-          console.log(error.text);
-          console.log("Message was not sent");
-          setEmailSent(false);
-        }
-      );
+    const formData = new FormData(e.target);
+    formData.append("access_key", "6545d80b-58b3-46c4-9233-f34a64d73c5f");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+      setEmailSent(true);
+    }
   };
 
   return (
-    <div className="w-full h-[calc(100vh-120px)] flex justify-center bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
+    <div className="w-full h-[calc(100vh-110px)] flex justify-center bg-slate-100 dark:bg-slate-800 text-black dark:text-white">
       {!emailSent ? (
         <div className="w-[450px] h-[450px] mt-[60px] border-2 border-black dark:border-white rounded-lg">
           <h1 className="mb-3 py-2.5 text-center text-2xl font-semibold border-b-2 border-black dark:border-white">
             Contact Me
           </h1>
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className="flex flex-col items-center"
-          >
+          <form onSubmit={onSubmit} className="flex flex-col items-center">
             <div className="flex flex-col items-center">
               <div className="w-full flex-row">
                 <label className="text-left">
@@ -48,7 +42,7 @@ const Contact = () => {
                 </label>
               </div>
               <input
-                name="user_name"
+                name="name"
                 type="text"
                 maxLength="50"
                 autoFocus
@@ -63,7 +57,7 @@ const Contact = () => {
                 </label>
               </div>
               <input
-                name="user_email"
+                name="email"
                 type="email"
                 maxLength="50"
                 required
@@ -87,13 +81,15 @@ const Contact = () => {
               <input
                 type="submit"
                 value="Send"
-                className="w-[125px] h-[35px] font-medium text-black dark:text-white bg-green-400 border-2 border-green-500 rounded-lg cursor-pointer hover:scale-105"
+                className="w-[125px] h-[35px] font-medium text-black dark:text-white bg-green-400 border-2 border-green-500 rounded-full cursor-pointer hover:scale-105"
               />
             </div>
           </form>
         </div>
       ) : (
-        <h1 className="mt-[60px] text-center text-2xl font-semibold">Thank you for your input.</h1>
+        <h1 className="mt-[60px] text-center text-2xl font-semibold">
+          Thank you for your input.
+        </h1>
       )}
     </div>
   );
