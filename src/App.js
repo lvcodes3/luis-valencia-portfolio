@@ -27,7 +27,7 @@ function App() {
   return (
       <Router>
         <div className={colorMode}>
-          <Navbar />
+          <Navbar colorMode={colorMode} changeColorMode={changeColorMode} />
           <Routes>
             <Route 
               path="/" 
@@ -50,7 +50,7 @@ function App() {
               element={<Contact />}
             />
           </Routes>
-          <Footer colorMode={colorMode} changeColorMode={changeColorMode} />
+          <Footer />
         </div>
       </Router>
   );

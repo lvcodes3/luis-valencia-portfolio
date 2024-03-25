@@ -160,7 +160,10 @@ const About = () => {
             <div className="flex flex-wrap justify-center gap-2">
               {skills.map((skill) => {
                 return (
-                  <div className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105">
+                  <div
+                    key={skill} 
+                    className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105"
+                  >
                     {skill}
                   </div>
                 );
@@ -172,7 +175,10 @@ const About = () => {
             <div className="flex flex-wrap justify-center gap-2">
               {softwares.map((software) => {
                 return (
-                  <div className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105">
+                  <div
+                    key={software} 
+                    className="w-[100px] h-[100px] p-1 flex justify-center items-center dark:text-white bg-green-400 dark:bg-slate-700 border-2 border-black rounded-2xl cursor-pointer hover:scale-105"
+                  >
                     {software}
                   </div>
                 );
